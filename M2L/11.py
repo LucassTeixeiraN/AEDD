@@ -13,3 +13,5 @@ for i in range(n-2 ):# rodará  n-1 vezes
 #                     = 2(n-2n-2)
 #                     = 2(-n-2)
 #                     = 2n-4
+
+# O(n**2)
