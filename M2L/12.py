@@ -6,7 +6,7 @@ for i in range(0,n,2): #rodará até n variando de 2 em 2
     print(i)
 for i in range(0,n,2):#rodará até n variando de 2 em 2
     print(i)
-i -= 1
+    i -= 1
 """no melhor onde n é impár rodará até 1 numero antes do final"""
 """pior caso onde n é par rodará até o proprio n"""
 # 0(n)
