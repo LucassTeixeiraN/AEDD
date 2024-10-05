@@ -29,13 +29,22 @@ def menorNumero(lista, min, n):
     if not lista:
         return n
     elif lista[0] == min:
-        menorNumero(lista[1:], min, n + 1)
+        return menorNumero(lista[1:], min, n + 1)
     else:
-        menorNumero(lista[1:], min, n)
+        return menorNumero(lista[1:], min, n)
+    
+def maiorNumero(lista, max, n):
+    if not lista:
+        return n
+    elif lista[-1] == max:
+        return menorNumero(lista[:len(lista)-1], min, n + 1)
+    else:
+        return menorNumero(lista[:len(lista)-1], min, n)
 
 def main():
     lista = cadastrarNumeros(int(input("Insira quantos números a lista terá: ")))
     bubbleSort(lista)
     print(f"O menor número é {lista[0]} e ele aparece {menorNumero(lista, lista[0], 0)} vezes")
+    print(f"O maior número é {lista[-1]} e ele aparece {menorNumero(lista, lista[-1], 0)} vezes")
 
 main()
