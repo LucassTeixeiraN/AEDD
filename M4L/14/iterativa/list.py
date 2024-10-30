@@ -32,7 +32,7 @@ class List:
 
 
     def listChanger(self, length):
-        currentPosition = 0
+        currentPosition = 1
         temp = self.head
         reverseTemp = self.tail
         while currentPosition < length // 2 and temp and reverseTemp:
@@ -63,7 +63,6 @@ class List:
             temp = temp.next
             reverseTemp = reverseTemp.prev
             currentPosition += 1
-    
 
     def showList(self):
         if self.isEmpty():
