@@ -43,38 +43,42 @@ class LinkedList:
                 temp = temp.next
             print()
 
-    def searchNode(self, data):
-        if self.isEmpty():
-            print("Empty list.")
-            return None
-        
+    def index(self, item: Node):
+        index = 0
         temp = self.head
         while temp:
-            if temp.data == data:
-                return temp
+            if temp.data == item.data:
+                return index
             temp = temp.next
-        return None
-
-    def pop(self, key):
-        if self.isEmpty():
-            print("Empty list.")
-            return
-
-        temp = self.head
-        prev = None
-        
-        while temp is not None:
-            if temp.data == key:
-                if prev is None:
-                    self.head = temp.next
-                else:
-                    prev.next = temp.next
-                return (self.head, temp)
-            prev = temp
-            temp = temp.next
-
+            index += 1
+    
     def clear(self):
         if self.isEmpty():
             print("Empty list.")
         else:
             self.head = None
+            
+    @property    
+    def length(self):
+        count = 0
+        temp = self.head
+        while temp:
+            temp = temp.next
+            count += 1
+        return count
+
+
+
+def pop(key, linked_list):
+    temp = linked_list.head
+    prev = None
+    
+    while temp is not None:
+        if linked_list.index(temp) == key:
+            if prev is None:
+                linked_list.head = temp.next
+            else:
+                prev.next = temp.next
+            return (linked_list, temp)
+        prev = temp
+        temp = temp.next
