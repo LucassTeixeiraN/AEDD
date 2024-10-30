@@ -50,12 +50,11 @@ class List:
         else:
             print("Posição fora do alcance da lista.")
 
-    def findPosition(self, temp, pos):
-        currentPosition = 0
-        while temp and self.verifyPosition(currentPosition, pos):
-            temp = temp.next
-            currentPosition += 1
-
+    def findPosition(self, temp, pos, currentPosition = 0):
+        
+        if temp and self.verifyPosition(currentPosition, pos):
+          return self.findPosition(temp.next, pos, currentPosition + 1)
+      
         if temp is not None:
             return temp
         else:
