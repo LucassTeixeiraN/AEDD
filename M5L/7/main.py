@@ -39,7 +39,11 @@ def insereCidade(nomeRodovia: str, nomeCidade: str):
     highway:Highway = findHighway(nomeRodovia)
     highway.append(nomeCidade)
         
+def rodoviasCidade(nomeCidade: str):
+    return highwayQueue.searchCity(nomeCidade)
 
+def cruzamento(nomeRodovia1: str, nomeRodovia2:str):
+    return highwayQueue.highwayCrossing(nomeRodovia1, nomeRodovia2)
 
 def main():
     global highwayQueue
@@ -51,11 +55,14 @@ def main():
         if option == "1":
             cityName =  input("Nome da cidade: ")
             highwayName =  input("Nome da rodovia: ")
-            insereCidade(highwayName, cityName)
+            insereCidade(highwayName, cityName.lower())
         elif option == "2":
-            highwayQueue.print()
-        # elif option == "3":
-            
+            cityName = input("Nome da cidade: ")
+            print(rodoviasCidade(cityName))
+        elif option == "3":
+            highway1 = input("Nome da primeira rodovia: ")
+            highway2 = input("Nome da segunda rodovia: ")
+            print(cruzamento(highway1, highway2))
         else:
             print("Saindo do programa...")
             break
