@@ -56,29 +56,61 @@ class DoublyCircularLinkedOrderedList:
         
         print("Element not found in the list!")
 
-    def searchNode(self, data):
+    def searchNode(self, letter: str):
         if self.isEmpty():
             print("Empty list.")
             return None
         
+        hasFound = False
         current = self.head
         while True:
-            if current.data == data:
-                return current
+            if current.data['name'][0].lower() == letter.lower():
+                print(f'Nome: {current.data["name"]} | Salário: {current.data["salary"]:.2f}', end='\n')
+                hasFound = True
             current = current.next
             if current == self.head:
                 break
-        return None
+        
+        if not hasFound:
+            print("Nenhum nome encontrado com a letra digitada.")
 
-    def display(self):
+    def calculateTax(self, salary):
+        if salary <= 850:
+            return 0
+        elif salary <= 1200:
+            return salary * 0.1
+        else:
+            return salary * 0.2
+        
+    def showNodeData(self, data: dict, show_tax):
+        if show_tax:
+            tax = self.calculateTax(data['salary'])
+            print(f"Nome: {data['name']} | Imposto: {tax:.2f} | Valor a receber: {(data['salary'] - tax):.2f}", end='\n')
+        else:
+            print(f"Nome: {data['name']} | Salário: {data['salary']:.2f}", end='\n')
+
+    def display(self, show_tax=True):
         if self.isEmpty():
             print("List is empty!!")
             return
 
         current = self.head
         while True:
-            print(current.data, end=" ")
+            self.showNodeData(current.data, show_tax)
             current = current.next
             if current == self.head:
+                break
+        print()
+
+    def displayReverse(self, show_tax=True):
+        if self.isEmpty():
+            print("List is empty!!")
+            return
+
+        current = self.head.previous
+        while True:
+            self.showNodeData(current.data, show_tax)
+            current = current.previous
+            if current == self.head.previous:
                 break
         print()

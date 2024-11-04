@@ -21,54 +21,28 @@ from doublyCircularLinkedOrdered import DoublyCircularLinkedOrderedList
 def main():
     ordered_list = DoublyCircularLinkedOrderedList()
 
-    print("Inserting elements:")
     while True:
         try:
-            name = input("Enter name: ")
-            salary = float(input("Enter salary: "))
+            name = input("Digite o nome: ")
+            salary = float(input("Digite o salário: "))
             ordered_list.insert({"name": name, "salary": salary})
             
-            if input("Do you want to add another employee? (y/n): ").lower() != "y":
+            if input("Deseja continuar? (s/n): ").lower().strip() == "n":
                 break
         except ValueError:
             print("Invalid input. Please enter an integer.")
             
+    print('Salários e impostos:')
     ordered_list.display()
-
-    # Test searching for an element
-    print("\nSearching for 20:")
-    node = ordered_list.searchNode(20)
-    if node:
-        print(f"Found: {node.data}")
-    else:
-        print("Not found.")
-
-    # Test deleting an element
-    print("\nDeleting 20:")
-    ordered_list.delete(20)
-    ordered_list.display()  # Should display: 10 30 40
-
-    # Test deleting an element that does not exist
-    print("\nTrying to delete 50 (not in list):")
-    ordered_list.delete(50)  # Should print "Element not found in the list!"
-
-    # Test deleting the head element
-    print("\nDeleting 10 (head):")
-    ordered_list.delete(10)
-    ordered_list.display()  # Should display: 30 40
-
-    # Test deleting the last remaining element
-    print("\nDeleting 40 (last element):")
-    ordered_list.delete(40)
-    ordered_list.display()  # Should display: 30
-
-    # Final check to see if the list is empty
-    print("\nDeleting last element (30):")
-    ordered_list.delete(30)
-    ordered_list.display()  # Should print "List is empty!!"
-
-    # Final check
-    print("Is the list empty?", ordered_list.isEmpty())
+    
+    print('Pesquisa pela letra inicial do nome')
+    ordered_list.searchNode(input("Digite a letra inicial do nome: "))
+    
+    print('\nFuncionarios ordenados pelo salário (crescente):')
+    ordered_list.display(False)
+    
+    print('\nFuncionarios ordenados pelo salário (decrescente):')
+    ordered_list.displayReverse(False)
 
 if __name__ == "__main__":
     main()
