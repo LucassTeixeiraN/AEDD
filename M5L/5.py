@@ -41,19 +41,20 @@ class Aeroporto:
         else:
             print("\nNenhum avião na fila de decolagem.\n")
 
-# Exemplo de uso
-aeroporto = Aeroporto()
-
-# Adiciona alguns aviões
-aeroporto.adicionar_aviao(Aviao("Boeing 737", 101, 180))
-aeroporto.adicionar_aviao(Aviao("Airbus A320", 102, 200))
-aeroporto.adicionar_aviao(Aviao("Embraer E195", 103, 124))
-
-# Realiza as operações
-print("Lista de operações do aeroporto:\n")
-print("lista de numero aviões:") + aeroporto.listar_numero_avioes()
-print("lista de aviões:") + aeroporto.listar_avioes()
-print("lista primeiro de avião:") + aeroporto.listar_primeiro_aviao()
-aeroporto.autorizar_decolagem()
-aeroporto.listar_avioes()
-aeroporto.listar_numero_avioes()
+def main()
+    aeroporto = Aeroporto()
+    
+    
+    aeroporto.adicionar_aviao(Aviao("Boeing 737", 101, 180))
+    aeroporto.adicionar_aviao(Aviao("Airbus A320", 102, 200))
+    aeroporto.adicionar_aviao(Aviao("Embraer E195", 103, 124))
+    
+    
+    print("Lista de operações do aeroporto:\n")
+    print("lista de numero aviões:") + aeroporto.listar_numero_avioes()
+    print("lista de aviões:") + aeroporto.listar_avioes()
+    print("lista primeiro de avião:") + aeroporto.listar_primeiro_aviao()
+    aeroporto.autorizar_decolagem()
+    aeroporto.listar_avioes()
+    aeroporto.listar_numero_avioes()
+main()
