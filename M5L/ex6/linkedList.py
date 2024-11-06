@@ -27,7 +27,11 @@ class LinkedList:
             current = current.next
 
         result = letters + digits[::-1]
-        return result
+        new_list = LinkedList()
+        for value in result:
+            new_list.add(value)
+        
+        return new_list
 
     def print_list(self):
         current = self.head
