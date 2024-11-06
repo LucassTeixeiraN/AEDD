@@ -6,13 +6,13 @@ def menu():
     print("2. Print the current list")
     print("3. Reorder letters and digits")
     print("4. Exit")
+    return input("Enter your choice: ")
 
 def main():
     linked_list = LinkedList()
 
     while True:
-        menu()
-        choice = input("Enter your choice: ")
+        choice = menu()
 
         if choice == "1":
             value = input("Enter value: ")

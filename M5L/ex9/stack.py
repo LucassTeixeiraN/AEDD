@@ -1,88 +1,55 @@
+from node import Node
+
 class Stack:
     def __init__(self):
-        self.items = []
-
-    def push(self, item):
-        self.items.append(item)
-
+        self.head = None
+        self.tail = None
+    
+    def is_empty(self):
+        return self.head == None
+    
+    def push(self, new_data):
+        new_node = Node(new_data)
+        if self.is_empty():
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+        self.head = new_node
+        
+    def print_list(self):
+        if self.is_empty():
+            print('Empty stack.')
+        else:
+            current = self.head
+            while current:
+                print(current.data, end=" ")
+                current = current.next
+            print()
+            
     def pop(self):
         if not self.is_empty():
-            return self.items.pop()
-        return None
-
-    def is_empty(self):
-        return len(self.items) == 0
-
-    def top(self):
-        if not self.is_empty():
-            return self.items[-1]
-        return None
-
-    def bottom(self):
-        if not self.is_empty():
-            return self.items[0]
-        return None
+            self.head = self.head.next
+            
+    def clear(self):
+        self.head = None
 
 
-def show_even_numbers(stack):
-    if stack.is_empty() or stack.bottom() == stack.top():
-        print("Intervalo inválido para mostrar números pares.")
-        return
-
-    start = min(stack.bottom(), stack.top())
-    end = max(stack.bottom(), stack.top())
-
-    even_numbers = [num for num in range(start, end + 1) if num % 2 == 0]
-    if even_numbers:
-        print("Números pares entre o primeiro e o último número cadastrado:", even_numbers)
+def show_even_numbers(stack: Stack):
+    if stack.is_empty():
+        print('Empty stack.')
     else:
-        print("Não há números pares no intervalo.")
+        current = stack.head
+        while current:
+            if current.data % 2 == 0:
+                print(current.data, end=" ")
+            current = current.next
+        print()
 
+    
 
-def delete_number(stack):
+def delete_number(stack: Stack):
     if stack.is_empty():
         print("A pilha está vazia. Nenhum número para excluir.")
     else:
         removed = stack.pop()
         print(f"Número {removed} excluído da pilha.")
-
-
-def main():
-    stack = Stack()
-    while True:
-        print("\nMENU")
-        print("1- Cadastrar número")
-        print("2- Mostrar números pares entre o primeiro e o último número cadastrado")
-        print("3- Excluir número")
-        print("4- Sair")
-        
-        try:
-            option = int(input("Escolha uma opção: "))
-        except ValueError:
-            print("Opção inválida. Por favor, digite um número entre 1 e 4.")
-            continue
-
-        if option == 1:
-            try:
-                num = int(input("Digite o número para cadastrar: "))
-                stack.push(num)
-                print(f"Número {num} cadastrado.")
-            except ValueError:
-                print("Entrada inválida. Por favor, digite um número inteiro.")
-        
-        elif option == 2:
-            show_even_numbers(stack)
-        
-        elif option == 3:
-            delete_number(stack)
-        
-        elif option == 4:
-            print("Saindo do programa.")
-            break
-        
-        else:
-            print("Opção inválida. Por favor, escolha uma opção entre 1 e 4.")
-
-
-if __name__ == "__main__":
-    main()
