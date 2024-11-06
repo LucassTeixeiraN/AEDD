@@ -4,22 +4,25 @@ class CircularDoublyLinkedList:
     def __init__(self):
         self.head = None
 
+    def is_empty(self):
+        return self.head == None
+
     def search_name(self, key):
-        if self.head is None:
-            return None
-        current = self.head
-        while True:
-            if current.key == key:
-                return current.name
-            current = current.next
-            if current == self.head:
-                break
+        if not self.is_empty():
+            current = self.head
+            while True:
+                if current.key == key:
+                    return current.name
+                current = current.next
+                if current == self.head:
+                    break
         return None
 
     def insert(self, key, name):
         new_node = Node(key, name)
-        if self.head is None:
-            new_node.next = new_node.prev = new_node
+        if self.is_empty():
+            new_node.next = new_node
+            new_node.prev = new_node
             self.head = new_node
         else:
             current = self.head
@@ -33,8 +36,10 @@ class CircularDoublyLinkedList:
                 self.head = new_node
 
     def remove(self, key):
-        if self.head is None:
-            return
+        if self.is_empty():
+            print('Empty List')
+            return None
+            
         current = self.head
         while True:
             if current.key == key:
@@ -49,21 +54,22 @@ class CircularDoublyLinkedList:
             current = current.next
             if current == self.head:
                 break
+            
 
     def print_list(self):
-        if self.head is None:
+        if self.is_empty():
             print("Empty list.")
-            return
-        current = self.head
-        while True:
-            print(f"Key: {current.key}, Name: {current.name}")
-            current = current.next
-            if current == self.head:
-                break
+        else:
+            current = self.head
+            while True:
+                print(f"Key: {current.key}, Name: {current.name}")
+                current = current.next
+                if current == self.head:
+                    break
 
     def copy_list(self):
         new_list = CircularDoublyLinkedList()
-        if self.head is None:
+        if self.is_empty():
             return new_list
         current = self.head
         while True:
@@ -74,7 +80,7 @@ class CircularDoublyLinkedList:
         return new_list
 
     def concatenate(self, other_list):
-        if self.head is None:
+        if self.is_empty():
             self.head = other_list.head
             return
         if other_list.head is None:
