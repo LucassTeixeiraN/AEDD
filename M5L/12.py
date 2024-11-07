@@ -1,3 +1,4 @@
+
 # 12. Faça um programa que apresente o menu de opções abaixo:
 # MENU
 # 1- Cadastrar tipo
@@ -107,6 +108,7 @@ def menu():
         elif opcao == '4':
             excluir_tipo()
         elif opcao == '5':
+            print('Encerrando...')
             break
         else:
             print("Opção inválida.")
