@@ -24,7 +24,6 @@ class ListaEncadeada:
     def inserir_ordenado(self, nome, salario):
         novo_funcionario = Funcionario(nome, salario)
 
-        
         if self.cabeca is None or self.cabeca.salario >= salario:
             novo_funcionario.proximo = self.cabeca
             self.cabeca = novo_funcionario
@@ -41,7 +40,6 @@ class ListaEncadeada:
             print(f"Nome: {atual.nome}, Salário: {atual.salario}")
             atual = atual.proximo
 
-
     def calcular_media_salarial(self):
         total_salario = 0
         contador = 0
@@ -56,7 +54,6 @@ class ListaEncadeada:
         if self.cabeca is None:
             return []
 
-     
         maior_salario = self.cabeca.salario
         atual = self.cabeca
         while atual is not None:
@@ -64,7 +61,7 @@ class ListaEncadeada:
                 maior_salario = atual.salario
             atual = atual.proximo
 
-       
+    
         funcionarios_maior = []
         atual = self.cabeca
         while atual is not None:
@@ -73,17 +70,17 @@ class ListaEncadeada:
             atual = atual.proximo
 
         return funcionarios_maior
+
     def contar_funcionarios_acima_de(self, valor):
-            contador = 0
-            atual = self.cabeca
-            while atual is not None:
-                if atual.salario > valor:
-                    contador += 1
-                atual = atual.proximo
-            return contador
+        contador = 0
+        atual = self.cabeca
+        while atual is not None:
+            if atual.salario > valor:
+                contador += 1
+            atual = atual.proximo
+        return contador
 
 def main():
-  
     lista_funcionarios = ListaEncadeada()
     n = int(input("Quantos funcionários deseja cadastrar? "))
 
@@ -101,13 +98,14 @@ def main():
     funcionarios_maior_salario = lista_funcionarios.funcionarios_maior_salario()
     print("\nFuncionário(s) com o maior salário:")
     for nome in funcionarios_maior_salario:
-            print(nome)
+        print(nome)
 
-            
-            valor = float(input("\nDigite o valor para verificar salários superiores: "))
+    valor = float(input("\nDigite o valor para verificar salários superiores: "))
     quantidade_acima = lista_funcionarios.contar_funcionarios_acima_de(valor)
     if quantidade_acima > 0:
         print(f"\nQuantidade de funcionários com salário acima de {valor}: {quantidade_acima}")
     else:
         print(f"\nNenhum funcionário possui salário acima de {valor}.")
+
 main()
+
