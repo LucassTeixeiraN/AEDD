@@ -23,7 +23,6 @@ def main():
         else:
             odd_list.append(num)
 
-    # Adicionando elementos das listas simples à lista duplamente encadeada
     current = even_list.head
     while current:
         sorted_list.insert(current.data)
@@ -34,7 +33,6 @@ def main():
         sorted_list.insert(current.data)
         current = current.next
 
-    # Exibindo resultados
     print("Lista em ordem crescente:")
     sorted_list.display()
 

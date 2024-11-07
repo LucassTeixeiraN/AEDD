@@ -31,14 +31,15 @@ class List:
         return pos == 0
 
 
-    def listChanger(self, current, prev = None):
-        
-        if current is None:
-            self.head = prev
-            return
-        next_node = current.next      # Armazena o próximo nó
-        current.next = prev           # Inverte o ponteiro do nó atual
-        self.listChanger(next_node, current)  # Recursão para o próximo nó         
+    def listChanger(self):
+        prev = None
+        current = self.head
+        while current:
+            next_node = current.next  
+            current.next = prev       
+            prev = current            
+            current = next_node     
+        self.head = prev              
 
     def showList(self):
         if self.isEmpty():

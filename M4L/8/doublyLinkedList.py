@@ -7,12 +7,12 @@ class DoublyLinkedList:
 
     def insert(self, data):
         new_node = DoublyNode(data)
-        if not self.head:  # Lista vazia
+        if not self.head: 
             self.head = new_node
             self.tail = new_node
             return
 
-        if data < self.head.data:  # Inserir no início
+        if data < self.head.data: 
             new_node.next = self.head
             self.head.prev = new_node
             self.head = new_node
@@ -26,9 +26,9 @@ class DoublyLinkedList:
         new_node.prev = current
 
         current.next = new_node
-        if new_node.next:  # Atualiza o ponteiro prev do próximo nó
+        if new_node.next:  
             new_node.next.prev = new_node
-        else:  # Atualiza o tail se for o último elemento
+        else:  
             self.tail = new_node
 
     def display(self):

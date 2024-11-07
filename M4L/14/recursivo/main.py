@@ -28,7 +28,7 @@ def main():
             criarLista(newList, len)
         elif option == "2":
             print("-"*60)
-            newList.listChanger(newList.head)
+            newList.listChanger()
             newList.showList()
             print("-"*60)
         elif option == "0":

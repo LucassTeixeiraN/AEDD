@@ -12,7 +12,7 @@ def pesquisaLR(target, vetor, position = 0):
     return pesquisaLR(target, vetor, position + 1)
 
 def main():
-    target = 5
+    target = 4
     vetor = [1,2,3,4]
     print(pesquisaLR(target, vetor))
 
