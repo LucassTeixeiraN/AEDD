@@ -23,6 +23,7 @@ def menu():
     print("1 - Inserir cidade")
     print("2 - Rodovias que passam por uma cidade")
     print("3 - Cruzamento de rodovias")
+    print("4 - Remover rodovia")
     print("0 - Sair")
     return input("Escolha uma opção: ")
 
@@ -63,8 +64,14 @@ def main():
             highway1 = input("Nome da primeira rodovia: ")
             highway2 = input("Nome da segunda rodovia: ")
             print(cruzamento(highway1, highway2))
-        else:
+        elif option == '4':
+            highwayQueue.pop()
+            print("Rodovia removida")
+        
+        elif option == "0":
             print("Saindo do programa...")
             break
+        else:
+            print("Opção inválida")
         
 main()

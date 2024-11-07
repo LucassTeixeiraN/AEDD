@@ -34,6 +34,7 @@ g. A opção 7 é a única que sai do programa. Uma mensagem deve ser mostrada
 para opções inválidas.'''
 
 from studentStack import StudentStack
+from gradeQueue import GradeQueue
 
 def menu():
     print("MENU")
@@ -53,6 +54,7 @@ def menu():
 def main():
     global students
     students = StudentStack()
+    grades = GradeQueue()
 
     while True:
         option = menu()
@@ -62,3 +64,54 @@ def main():
             students.push(name)
             print("Aluno cadastrado")
             print("-"*60)
+        elif option == "2":
+            grade = float(input("Insira a nota: "))
+            number = int(input("Insira o númbero do aluno: "))
+
+            if students.findStudent(number):
+                grades.push(grade, number)
+                print("Nota cadastrada")
+            else:
+                print("Aluno não cadastrado")
+
+        elif option == "3":
+            number = int(input("Insira o númbero do aluno: "))
+            if students.findStudent(number):
+                student = students.findStudent(number)
+                grade = grades.gradeFind(number)
+                if len(grade) == 0:
+                    print("Aluno sem nota")
+                else:
+                    print(f"Nome: {student.name}")
+                    print(f"Média: {sum(grade)/len(grade)}")
+            else:
+                print("Aluno não cadastrado")
+
+        elif option == "4":
+            studentsWithGrades = grades.gradesList()
+            studentsWithOutGrade = students.checkGrade(studentsWithGrades)
+
+            if len(studentsWithOutGrade) > 0:
+                for i in studentsWithOutGrade:
+                    print(i.name)
+            else:
+                print("Todos os alunos possuem notas")
+        elif option == "5":
+            studentsWithGrades = grades.gradesList()
+
+            if students.isEmpty():
+                print("Pilha vazia")
+            elif not students.lastStudent() in studentsWithGrades:
+                students.pop()
+                print("Aluno excluído")
+            else:
+                print("Este aluno possui notas, logo, não poderá ser excluído.")
+        elif option == "6":
+            grades.pop()
+            print("Nota excluída")
+        elif option == "7":
+            print("Saindo do programa")
+            break
+        else:
+            print("Opção inválida")
+main()  
