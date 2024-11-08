@@ -2,23 +2,33 @@
 # se são palíndromos. Um palíndromo é uma sequência de caracteres lida da mesma
 # forma de frente para trás e de trás para a frente; por exemplo, arara.
 
+class No:
+    def __init__(self, dado):
+        self.dado = dado
+        self.proximo = None
+
 class Pilha:
     def __init__(self):
-        self.itens = []
+        self.topo = None
 
     def empilhar(self, item):
-        self.itens.append(item)
+        novo_no = No(item)
+        novo_no.proximo = self.topo  
+        self.topo = novo_no 
 
     def desempilhar(self):
         if not self.esta_vazia():
-            return self.itens.pop()
+            item = self.topo.dado 
+            self.topo = self.topo.proximo  
+            return item
         return None
 
     def esta_vazia(self):
-        return len(self.itens) == 0
+        return self.topo is None
 
 def eh_palindromo(string):
     pilha = Pilha()
+    
     
     for caractere in string:
         pilha.empilhar(caractere)
@@ -30,9 +40,9 @@ def eh_palindromo(string):
 
 def main():
     while True:
-        entrada = input("Digite uma palavra ou digite stop para encerrar o programa: ").lower()
+        entrada = input("Digite uma palavra ou digite 'stop' para encerrar o programa: ").lower()
         if entrada == "stop":
-            print("programa encerrado!")
+            print("Programa encerrado!")
             break
         if not entrada.isalpha():  
             print("Insira uma palavra válida (apenas letras)!")
