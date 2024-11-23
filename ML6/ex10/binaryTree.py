@@ -31,21 +31,29 @@ class BinaryTree():
         else:
             return self.search(node.right, data)
     
-    def copyIntoArray(self, node: NodeTree, items: list = []):
+    def copyIntoArray(self, node: NodeTree, items: list):
         if node is not None:
             items = self.copyIntoArray(node.left, items)
             items.append(node.data)
             items = self.copyIntoArray(node.right, items)
         return items
     
-    def insertBalanced(self, nodeTree: NodeTree, items: list):
+    def insertBalanced(self, items: list):
         middle = len(items) // 2
+        start_array = items[:middle]
+        end_array = items[middle + 1:]
+        
+        self.insert(self.root, items[middle])
+        if len(start_array) > 0:
+            self.insertBalanced(start_array)
+        if len(end_array) > 0:
+            self.insertBalanced(end_array)
         
         
-    def rebalance(self, node: NodeTree):
-        items = self.copyIntoArray(node)
+    def rebalance(self):
+        items = self.copyIntoArray(self.root, [])
         self.deleteTree()
-        self.insertBalanced(self.root, items)
+        self.insertBalanced(items)
         
         
     def printInOrder(self, node: NodeTree):

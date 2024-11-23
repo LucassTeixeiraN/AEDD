@@ -1,3 +1,8 @@
+'''Adicione o método rebalance a uma Árvore Binária de Busca. O método copia os itens
+da árvore para uma lista durante um percurso em in-ordem e, em seguida, limpa a
+árvore. O método então copia os itens da lista de volta para a árvore de tal maneira
+que a forma da árvore permaneça balanceada. Dica: Use uma função auxiliar
+recursiva que visite repetidamente os itens nos pontos médios das partes da lista.'''
 from binaryTree import BinaryTree
 
 def menu():
@@ -65,7 +70,7 @@ def main():
         elif option == 12:
             tree.printTree(tree.root)
         elif option == 13:
-            tree.rebalance(tree.root)
+            tree.rebalance()
         elif option == 14:
             break
         
