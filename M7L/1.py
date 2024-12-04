@@ -1,3 +1,8 @@
+'''1. Escreva um programa que, dados uma matriz de adjacência e dois nós de um grafo,
+calcule:
+a. O número de caminhos de determinado comprimento existentes entre eles.
+b. O número total de caminhos existentes entre eles.'''
+
 class GraphAM:
     __n = 0
     __g = [[0 for column in range(10)] for row in range(10)]
