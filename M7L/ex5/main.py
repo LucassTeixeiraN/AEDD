@@ -23,6 +23,18 @@ class Graph:
             for neighbor in reversed(self.graph[current]):
                 if neighbor not in visited:
                     stack.append(neighbor)
+                    
+    def DFSUtil(self, v, visited):
+        visited.add(v)
+        print(v, end=" ")
+        
+        for neighbor in self.graph[v]:
+            if neighbor not in visited:
+                self.DFSUtil(neighbor, visited)
+                
+    def DFSRecursive(self, v):
+        visited = set()
+        self.DFSUtil(v, visited)
 
 def main():
     g = Graph()
@@ -36,6 +48,8 @@ def main():
 
     print("Following is Depth First Traversal (starting from vertex 2):")
     g.DFS(2)
+    print()
+    g.DFSRecursive(2)
 
 if __name__ == "__main__":
     main()
